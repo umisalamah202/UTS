@@ -1,0 +1,24 @@
+{
+  "name": "uts",
+  "version": "1.0.0",
+  "description": "aplikasi projek uts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umisalamah202/UTS.git"
+  },
+  "keywords": [
+    "projek",
+    "uts",
+    "nodejs"
+  ],
+  "author": "umi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/umisalamah202/UTS/issues"
+  },
+  "homepage": "https://github.com/umisalamah202/UTS#readme"
+}
