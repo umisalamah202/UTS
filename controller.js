@@ -41,4 +41,17 @@ exports.tampilberdasarkanid = function (req,res) {
          });
 };
 
+//menampilkan semua data montir berdasarkan id
+exports.tampilberdasarkanid = function (req,res) {
+    let id = req.params.id;
+    connection.query('SELECT * FROM t_montir WHERE id_montir = ?',[id],
+         function(error, rows, fileds){
+             if(error){
+                 console.log(error);
+             }else {
+                 response.ok(rows, res);
+             }
+         });
+};
+
 
