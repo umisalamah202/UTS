@@ -54,4 +54,21 @@ exports.tampilberdasarkanid = function (req,res) {
          });
 };
 
+//menampilkan data montir
+exports.tambahmontir = function (req,res) {
+    var nama_montir = req.body.nama_montir;
+    var harga =req.body.harga;
+    
+    connection.query('INSERT INTO t_montir (nama_montir,harga) VaLUES(?,?)',
+    [nama_montir,harga],
+    function (error, rows, fileds) {
+        if(error){
+            console.log(error);
+        }else {
+            response.ok("Berhasil Menambahkan Data!",res)
+        }
+    });
+};
+
+
 
