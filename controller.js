@@ -17,5 +17,15 @@ exports.tampilsemuamontir = function(req,res){
 
     });  
 };
+//menampilkan semua data sparepart     
+exports.tampilsemuasparepart = function(req,res){
+    connection.query('SELECT * FROM t_sparepart', function(error, rows, fileds){
+        if(error){
+            connection.log(error);
+        }else {
+            response.ok(rows,res)
+        }
 
+    });  
+};
 
