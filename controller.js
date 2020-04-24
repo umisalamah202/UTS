@@ -87,7 +87,7 @@ exports.tambahsparepart = function (req,res) {
 };
 //menampilkan data tambah user
 exports.tambahuser = function (req,res) {
-    var username = req.body.username;
+    var username =req.body.username;
     var email =req.body.email;
     var password =req.body.password;
     var role =req.body.role;
