@@ -54,7 +54,7 @@ exports.tampilberdasarkanid = function (req,res) {
          });
 };
 
-//menampilkan data montir
+//menampilkan data tambah  montir
 exports.tambahmontir = function (req,res) {
     var nama_montir = req.body.nama_montir;
     var harga =req.body.harga;
@@ -69,6 +69,39 @@ exports.tambahmontir = function (req,res) {
         }
     });
 };
-
+//menampilkan data tambah sparepart
+exports.tambahsparepart = function (req,res) {
+    var nama_sparepart = req.body.nama_sparepart;
+    var harga_sparepart =req.body.harga_sparepart;
+    var satuan =req.body.satuan;
+    
+    connection.query('INSERT INTO t_sparepart (nama_sparepart,harga_sparepart,satuan) VaLUES(?,?,?)',
+    [nama_sparepart,harga_sparepart,satuan],
+    function (error, rows, fileds) {
+        if(error){
+            console.log(error);
+        }else {
+            response.ok("Berhasil Menambahkan Data sparepart!",res)
+        }
+    });
+};
+//menampilkan data tambah user
+exports.tambahuser = function (req,res) {
+    var username = req.body.username;
+    var email =req.body.email;
+    var password =req.body.password;
+    var role =req.body.role;
+    var tanggal_daftar =req.body.tanggal_daftar;
+    
+    connection.query('INSERT INTO t_user (username,email,password,role,tanggal_daftar) VaLUES(?,?,?,?,?)',
+    [username,email,password,role,tanggal_daftar],
+    function (error, rows, fileds) {
+        if(error){
+            console.log(error);
+        }else {
+            response.ok("Berhasil Menambahkan Data user!",res)
+        }
+    });
+};
 
 
