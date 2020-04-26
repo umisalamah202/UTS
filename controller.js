@@ -138,6 +138,21 @@ exports.ubahsparepart = function(req,res) {
         });
 }
 
+//Menghapus data montir berdasarkan id
+exports.hapusmontir = function (req, res){
+    var id_montir = req.body.id_montir;
+    connection.query('DELETE FROM t_montir WHERE id_montir=?', [id_montir], 
+    function(error, rows, fields){
+            if (error) {
+                console.log(error);
+            }else {
+                response.ok("Berhasil hapus data montir", res)
+            }
+        }); 
+}
+
+
+
 
 
 
