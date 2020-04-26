@@ -104,4 +104,22 @@ exports.tambahuser = function (req,res) {
     });
 };
 
+//mengubah data montir berdasarkan id
+exports.ubahmontir = function(req,res) {
+    var id_montir= req.body.id_montir;
+    var nama_montir= req.body.nama_montir;
+    var harga =req.body.harga;
+    
+
+    connection.query('UPDATE t_montir SET nama_montir=?, harga=? WHERE id_montir=?',[nama_montir,harga,id_montir],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else {
+                response.ok("Berhasil Ubah Data", res)
+            }
+        });
+}
+
+
 

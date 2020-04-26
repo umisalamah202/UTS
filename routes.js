@@ -6,7 +6,7 @@ module.exports = function(app) {
     app.route('/')
         .get(jsonku.index);
 
-    app.route('/tampil')
+    app.route('/tampilmontir')
         .get(jsonku.tampilsemuamontir);  
 
     app.route('/tampilsparepart')
@@ -26,5 +26,9 @@ module.exports = function(app) {
 
     app.route('/tambahuser')
         .post(jsonku.tambahuser);
+
+    app.route('/ubahmontir')
+        .put(jsonku.ubahmontir);
+
 
 }
