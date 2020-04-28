@@ -120,6 +120,26 @@ exports.tambahlevel = function (req,res) {
     });
 };
 
+//menampilkan data tambah servis
+exports.tambahservis = function (req,res) {
+    var tgl_servis =req.body.tgl_servis;
+    var id_user =req.body.id_user;
+    var id_montir =req.body.id_montir;
+    var jumlah_sparepart =req.body.jumlah_sparepart;
+    var id_sparepart =req.body.id_sparepart;
+    var jam_servis =req.body.jam_servis;
+    var total_servis =req.body.total_servis;
+    
+    connection.query('INSERT INTO t_servis (tgl_servis,id_user,id_montir,jumlah_sparepart,id_sparepart,jam_servis,total_servis) VaLUES(?,?,?,?,?,?,?)',
+    [tgl_servis,id_user,id_montir,jumlah_sparepart,id_sparepart,jam_servis,total_servis],
+    function (error, rows, fileds) {
+        if(error){
+            console.log(error);
+        }else {
+            response.ok("Berhasil Menambahkan Data servis!",res)
+        }
+    });
+};
 
 //mengubah data montir berdasarkan id
 exports.ubahmontir = function(req,res) {
