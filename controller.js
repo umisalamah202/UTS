@@ -104,6 +104,23 @@ exports.tambahuser = function (req,res) {
     });
 };
 
+//menampilkan data tambah level
+exports.tambahlevel = function (req,res) {
+    var nama_level =req.body.nama_level;
+    var role =req.body.role;
+
+    connection.query('INSERT INTO t_level (nama_level,role) VaLUES(?,?)',
+    [nama_level,role],
+    function (error, rows, fileds) {
+        if(error){
+            console.log(error);
+        }else {
+            response.ok("Berhasil Menambahkan Data level!",res)
+        }
+    });
+};
+
+
 //mengubah data montir berdasarkan id
 exports.ubahmontir = function(req,res) {
     var id_montir= req.body.id_montir;
