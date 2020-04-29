@@ -257,11 +257,29 @@ exports.hapussparepart = function (req, res){
         }); 
 }
 
+//Menghapus data user berdasarkan id
+exports.hapususer = function (req, res){
+    var id_user = req.body.id_user;
+    connection.query('DELETE FROM t_user WHERE id_user=?', [id_user], 
+    function(error, rows, fields){
+            if (error) {
+                console.log(error);
+            }else {
+                response.ok("Berhasil hapus data user", res)
+            }
+        }); 
+}
 
-
-
-
-
-
-
+//Menghapus data level berdasarkan id
+exports.hapuslevel = function (req, res){
+    var id_level = req.body.id_level;
+    connection.query('DELETE FROM t_montir WHERE id_montir=?', [id_montir], 
+    function(error, rows, fields){
+            if (error) {
+                console.log(error);
+            }else {
+                response.ok("Berhasil hapus data montir", res)
+            }
+        }); 
+}
 
