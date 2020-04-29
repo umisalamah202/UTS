@@ -175,6 +175,25 @@ exports.ubahsparepart = function(req,res) {
         });
 }
 
+//mengubah data user berdasarkan id
+exports.ubahuser = function(req,res) {
+    var id_user= req.body.id_user;
+    var username= req.body.username;
+    var email= req.body.email;
+    var password =req.body.password;
+    var role= req.body.role;
+    var tanggal_daftar =req.body.tanggal_daftar;
+    
+    connection.query('UPDATE t_user SET username=?, email=?, password=? role=?, tanggal_daftar=? WHERE id_user=?',[username,email,password,role,tanggal_daftar,id_user],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else {
+                response.ok("Berhasil ubah Data user ", res)
+            }
+        });
+}
+
 //Menghapus data montir berdasarkan id
 exports.hapusmontir = function (req, res){
     var id_montir = req.body.id_montir;
