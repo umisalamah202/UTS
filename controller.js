@@ -273,12 +273,12 @@ exports.hapususer = function (req, res){
 //Menghapus data level berdasarkan id
 exports.hapuslevel = function (req, res){
     var id_level = req.body.id_level;
-    connection.query('DELETE FROM t_montir WHERE id_montir=?', [id_montir], 
+    connection.query('DELETE FROM t_level WHERE id_level=?', [id_level], 
     function(error, rows, fields){
             if (error) {
                 console.log(error);
             }else {
-                response.ok("Berhasil hapus data montir", res)
+                response.ok("Berhasil hapus data level", res)
             }
         }); 
 }
