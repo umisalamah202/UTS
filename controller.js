@@ -194,6 +194,23 @@ exports.ubahuser = function(req,res) {
         });
 }
 
+//mengubah data level berdasarkan id
+exports.ubahlevel = function(req,res) {
+    var id_level= req.body.id_level;
+    var nama_level= req.body.nama_level;
+    var role =req.body.role;
+    
+
+    connection.query('UPDATE t_level SET nama_level=?, role=? WHERE id_level=?',[nama_level,role,id_level],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else {
+                response.ok("Berhasil ubah Data level ", res)
+            }
+        });
+}
+
 //Menghapus data montir berdasarkan id
 exports.hapusmontir = function (req, res){
     var id_montir = req.body.id_montir;
