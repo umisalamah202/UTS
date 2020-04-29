@@ -9,7 +9,7 @@ var ip = require('ip');
 //controller untuk register
 exports.registrasi = function(req,res) {
     var post = {
-        id_user: req.body.id_user,
+        
         username: req.body.username,
         email: req.body.email,
         password: md5(req.body.password),
@@ -43,14 +43,15 @@ exports.registrasi = function(req,res) {
     })
 
 }
-// controller untuk login 
+//controller untuk login
 exports.login = function(req,res){
     var post = {
-        password: req.body.password,
-        email: req.body.email
+    password: req.body.password,
+    email: req.body.email
     }
+
     var query = "SELECT * FROM ?? WHERE ??=? AND ??=?";
-    var table = ["t_user","password", md5(post.password), "email", post.email];
+    var table = ["t_user", "password", md5(post.password), "email", post.email];
 
     query = mysql.format(query,table);
     connection.query(query, function(error, rows){
@@ -61,33 +62,37 @@ exports.login = function(req,res){
                 var token = jwt.sign({rows}, config.secret, {
                     expiresIn: 1440
                 });
-                id_user = rows[0].id;
+                id_user = rows[0].id_user;
 
                 var data = {
                     id_user: id_user,
                     access_token: token,
-                    ip_address: ip_address()
+                    ip_address: ip.address()
                 }
 
                 var query = "INSERT INTO ?? SET ?";
                 var table = ["akses_token"];
 
                 query = mysql.format(query, table);
-                connection.query(query, data, function(error, rows){
+                connection.query(query, data , function(error, rows){
                     if(error){
                         console.log(error);
                     }else {
-                         res.json({
-                             success: true,
-                             message: 'Token JTW tergenerate!',
-                             token:token,
-                             currUser: data.id_user
-                         });
+                        res.json({
+                            success: true,
+                            message: "Token JWT Tergenerate!",
+                            token:token,
+                            currUser: data.id_user
+                        });
                     }
                 });
             }else {
-                 res.json({"Error": true, "Message":"Email atau password salah!"});
+                res.json({"Error": true, "Message":"Email atau password salah!"});
             }
         }
-    });   
-} 
+    });
+}
+
+exports.halamanrahasia = function(req,res){
+    response.ok("Halaman ini hanya untuk user dengan role = 2!",res);
+}
